@@ -47,4 +47,14 @@ if($('.fruits').length) // check if at least one checkbox is selected
 $('.hover').hover(
   function(){}, // mouseenter
   function(){}  // mouseleave
-)
+);
+---------------------------
+$.get(
+  'fetch-data.php',
+  {
+    what: $(this).val()
+  },
+  function(data){
+    $('#result').html(data);
+  }
+);

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fetch Get</title>
+  <style>
+    ul{
+      border: 1px solid black;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      float: left;
+      font-family: Verdana;
+      font-size: 12px;
+      width: 300px;
+    }
+    li{
+      padding: 10px 5px;
+      border-bottom: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <p>Show list of: </p>
+  <select id="choice">
+    <option value="">select</option>
+    <option value="good">Good Guys</option>
+    <option value="bad">Bad Guys</option>
+  </select>
+  <p id="result"></p>
+
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+  <script>
+    $(function(){
+      $('#choice').on('change', function(){
+        if($(this).val() != ''){
+          $.get(
+              'fetch-data.php',
+              {
+                what: $(this).val()
+              },
+              function(data){
+                $('#result').html(data);
+              }
+            );
+        }
+      });
+    });
+  </script>
+</body>
+</html>

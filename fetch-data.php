@@ -1,0 +1,19 @@
+<?php
+
+if($_GET['what'] == 'good'){
+  $names = array('Sherlock Holmes', 'John Watson', 'Hercule Poirot', 'Jane Marple');
+}else if($_GET['what'] == 'bad'){
+  $names = array('Professor Moriarty', 'Sebastian Moran', 'Charlse Milverton', 'Von Bork', 'Count Sylvius');  
+}
+
+echo getHTML($names);
+
+function getHTML($names){
+  $strResult = '<ul>';
+  for($i = 0; $i < count($names); $i++){
+    $strResult .= '<li>'.$names[$i].'</li>';
+  }
+  $strResult .= '</ul>';
+
+  return $strResult;
+}
