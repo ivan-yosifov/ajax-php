@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select All</title>
+  <style>
+    ul{
+      background-color: #dcdcdc;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      width: 350px;
+    }
+    li{
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>
+      <input type="checkbox" id="handle">
+      <label for="handle"><strong>Toggle All</strong></label>
+    </li>
+    <li>
+      <input type="checkbox" class="toggle">
+      <label>A study in Scarlet</label>
+    </li>
+    <li>
+      <input type="checkbox" class="toggle">
+      <label>The Sign of the Four</label>
+    </li>
+    <li>
+      <input type="checkbox" class="toggle">
+      <label>The Adventures of Sherlock Holmes</label>
+    </li>
+    <li>
+      <input type="checkbox" class="toggle">
+      <label>The Valley of Fear</label>
+    </li>
+    <li>
+      <input type="checkbox" class="toggle">
+      <label>His Last Bow</label>
+    </li>
+    <li>
+      <input type="button" id="getValue" value="Get Selected Values">
+      <br>
+      <label id="selected"></label>
+    </li>
+  </ul>
+
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+  <script>
+    $(function(){
+      $('#handle').on('click', function(){
+        if($(this).prop('checked') == true){
+          $('.toggle').prop('checked', 'true');
+        }else{
+          $('.toggle').prop('checked', false);
+        }
+      });
+
+      $('.toggle').on('click', function(){
+        if($('.toggle:checked').length == $('.toggle').length){
+          $('#handle').prop('checked', true);
+        }else{
+          $('#handle').prop('checked', false);
+        }
+      });
+
+      $('#getValue').on('click', function(){
+        var values = '';
+        if($('.toggle:checked').length){
+          $('.toggle:checked').each(function(){
+            values += $(this).next('label').html() + ', ';
+          });
+          $('#selected').html('Selected values are: ' + values);
+        }else{
+          $('#selected').html('NOthing is selected');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

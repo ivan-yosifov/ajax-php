@@ -1,0 +1,50 @@
+ready() - doesn't wait for images to load
+load() - waits for images to load
+---------------------------------
+1) $('input:text')
+    .on('focus', function(){ $(this).val(''); })
+    .on('blur', function(){ $(this).val('Enter name'); });
+2) $('input:text')
+    .on({focus: f(){}, blur: f(){} });
+------------------------------------
+$('select').on('change', function(){
+  alert($(this).val()); // get <option value="USA">
+});
+$('input:button').on('click', function(){
+  $('select').off('change'); // remove event handler
+});
+--------------------------------------
+var div = $('<div />', {
+          'class': 'future',
+          'text': 'I am a new div'
+        }); // create new element
+---------------------------------------
+$('body').on('click', 'div', function(){
+  $(this').css({'color': '#fff', 'padding':'20px'});
+}); // add event handler to dynamically added elements
+-------------------------------------------
+$('#loginForm').sumbit(function(){
+  return false; // wont submit form
+});
+$('#loginForm').submit(function(event){
+  event.preventDefault(); // wont submit form
+});
+-------------------------------------
+$('img').on('error', function(){
+  $(this).replaceWith('<img src="img/missing.png" alt="Could not load image">');
+}); // if image not found load this
+-------------------------------------
+$.each(images, function(key, value){
+  html += '<img src="img/' + value + '">';
+}); // iterate over images
+-------------------------------------
+$('#handle').on('click', function(){
+  if($(this).is(':checked'));
+});
+if($('.fruits').length == $('.fruits').length) // check if all checkboxes are selected
+if($('.fruits').length) // check if at least one checkbox is selected
+----------------------------------------------------
+$('.hover').hover(
+  function(){}, // mouseenter
+  function(){}  // mouseleave
+)

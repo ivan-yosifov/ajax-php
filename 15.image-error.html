@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Error</title>
+  <style>
+    div{
+      border: 1px solid black;
+      float: left;
+    }
+    img{
+      width: 180px;
+      height: 200px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="imageContainer"></div>
+
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+  <script>
+    $(function(){
+      var images = ['crocodile.jpg', 'zebra.jpg', 'kangaroo.jpg', 'koala.jpg', 'tiger.jpg', 'quokka.jpg'];
+      var html = '';
+      $.each(images, function(key, value){
+        html += '<img src="img/' + value + '">';
+      });
+      $('#imageContainer').html(html);
+
+      $('img').on('error', function(){
+        $(this).replaceWith('<img src="img/missing.png" alt="Could not load image">');
+      })
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Binding</title>
+  <style>
+    div{
+      border: 1px solid black;
+      cursor: pointer;
+      width: 200px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <input type="button" value="Create New Element" id="button">
+  <div class="future">Already on page</div>
+
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+  <script>
+    $(function(){
+      $('#button').on('click', function(){
+        var div = $('<div />', {
+          'class': 'future',
+          'text': 'I am a new div'
+        });
+        $('body').append(div);
+      });
+
+      $('body').on('click', 'div', function(){
+        $(this).css({
+          'color': 'red',
+          'font-weight': 'bold'
+        }).html('You clicked me');
+      })
+    });
+  </script>
+</body>
+</html>

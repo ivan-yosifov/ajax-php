@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Binding</title>
+  <style>
+    ul{
+      background-color: #dcdcdc;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      width: 250px;
+    }
+    li{
+      cursor: pointer;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>India</li>
+    <li>USA</li>
+    <li>UK</li>
+    <li>France</li>
+  </ul>
+  <select name="" id="">
+    <option value="Africa">Afrrica</option>
+    <option value="Antarctica">Antarctica</option>
+    <option value="Asia">Asia</option>
+    <option value="Australia">Australia</option>
+    <option value="Europe">Europe</option>
+    <option value="North America">North America</option>
+    <option value="South America">South America</option>
+  </select>
+  <br>
+  <input type="text">
+  <input type="button" value="Unbind select box">
+
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+  <script>
+    $(function(){
+      // $('input:text').on('focus', function(){
+      //   $(this).val('');
+      // }).on('blur', function(){
+      //   $(this).val('Enter some text');
+      // });
+      $('input:text').on({
+        focus: function(){
+          $(this).val('');
+        },
+        blur: function(){
+          $(this).val('Enter name');
+        }
+      });
+
+      $('li').on('click', function(){
+        $(this).css('background-color', 'red');
+      });
+
+      $('select').on('change', function(){
+        alert('You selected: ' + $(this).val());
+      });
+
+      $('input:button').on('click', function(){
+        $('select').off('change');
+      });
+    });
+  </script>
+</body>
+</html>

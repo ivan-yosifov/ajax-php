@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mouse Events</title>
+  <style>
+    div{
+      border: 1px solid black;
+      float: left;
+      height: 200px;
+      margin: 10px;
+      width: 220px;
+    }
+    p:first{
+      clear: both;
+    }
+  </style>
+</head>
+<body>
+  <div>You can toggle this div using Alt + S</div>
+  <div>You can toggle this div using Alt + G</div>
+  <p>&nbsp;</p>
+  <p>Press Alt + B to toggle both divs</p>
+
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+  <script>
+    $(function(){
+      var altPressed = false;
+      $(document).on('keydown', function(e){
+        if(e.which == 18){
+          altPressed = true;
+        }
+        if(altPressed){
+          switch(e.which){
+            case 83: 
+              $('div:first').slideToggle('slow');
+              return false;
+              break;
+            case 71:
+              $('div:last').slideToggle('slow');
+              return false;
+              break;
+            case 66:
+              $('div').slideToggle('slow');
+              return false;
+              break;
+          }
+        }
+      });
+      $(document).on('keyup', function(e){
+        if(e.which == 18){
+          altPressed = false;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
